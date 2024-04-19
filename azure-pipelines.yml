@@ -21,10 +21,10 @@ stages:
       name: Default
       demands: Agent.Name -equals planimation
     steps:
-    - task: Docker@2
-      displayName: Build an image
+    - task: Bash@3
       inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/server/docker/release/Dockerfile'
-        tags: |
-          $(tag)
+        targetType: 'inline'
+        script: |
+          # Write your commands here
+          cd /home/ubuntu/myagent/_work/1/s/server
+          docker build -t planimation-backend:latest -f ./docker/release/Dockerfile ./
