@@ -27,4 +27,11 @@ stages:
         script: |
           # Write your commands here
           cd /home/ubuntu/myagent/_work/1/s/server
+          docker rm planimation-backend
+          docker rmi planimation-backend:latest
           docker build -t planimation-backend:latest -f ./docker/release/Dockerfile ./
+          docker run --name planimation-backend -d -p 8080:8080 planimation-backend:latest
+          
+
+
+    
